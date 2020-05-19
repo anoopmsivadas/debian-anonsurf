@@ -1,6 +1,6 @@
 # Debian Anonsurf
 
-ParrotSec's anonsurf and stealth, ported to work with Debian
+ParrotSec's [Anonsurf](https://nest.parrotsec.org/packages/tools/anonsurf) and stealth, ported to work with Debian
 
 ## How to use this repo
 
