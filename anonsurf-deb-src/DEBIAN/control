@@ -1,11 +1,11 @@
-Package: kali-anonsurf
+Package: anonsurf
 Version: 1.2.2.2
 Architecture: all
-Maintainer: Und3rf10w
+Maintainer: Anoop M S<anoopms@disroot.org>
 Installed-Size: 64
 Depends: secure-delete, tor, i2p
 Recommends: gtkdialog, socat, gufw, proxychains, openvpn
 Suggests: vidalia
 Section: net
 Priority: optional
-Description: Parrot stealth and anon scripts, ported to work with Kali Linux
+Description: Parrot stealth and anon scripts, ported to work with Debian

@@ -62,7 +62,7 @@ fi
 
 function init {
 	echo -e -n " $GREEN*$BLUE killing dangerous applications$RESETCOLOR\n"
-	killall -q chrome dropbox iceweasel skype icedove thunderbird firefox chromium xchat transmission deluge pidgin pidgin.orig
+	killall -q chrome dropbox iceweasel skype icedove thunderbird firefox chromium xchat transmission deluge pidgin pidgin.orig firefox-esr hexchat steam firejail
 	
 	echo -e -n " $GREEN*$BLUE cleaning some dangerous cache elements"
 	bleachbit -c adobe_reader.cache chromium.cache chromium.current_session chromium.history elinks.history emesene.cache epiphany.cache firefox.url_history flash.cache flash.cookies google_chrome.cache google_chrome.history  links2.history opera.cache opera.search_history opera.url_history &> /dev/null
@@ -113,7 +113,7 @@ function ip {
 
 	echo -e "\nMy ip is:\n"
 	sleep 1
-	curl "http://myexternalip.com/raw" # Had a few issues with FrozenBox giving me the wrong IP address
+	curl "http://ipv4.icanhazip.com/" # Had a few issues with FrozenBox giving me the wrong IP address
 	echo -e "\n\n----------------------------------------------------------------------"
 }
 
@@ -136,10 +136,10 @@ function start {
 	
 	# Kill IPv6 services
 	echo -e "\n$GREEN[$BLUE i$GREEN ]$BLUE Stopping IPv6 services:$RESETCOLOR\n"
-	sed -i '/^.*\#kali-anonsurf$/d' /etc/sysctl.conf #delete lines containing #kali-anonsurf in /etc/sysctl.conf
+	sed -i '/^.*\#anonsurf$/d' /etc/sysctl.conf #delete lines containing #anonsurf in /etc/sysctl.conf
 	# add lines to sysctl.conf that will kill ipv6 services
-	echo "net.ipv6.conf.all.disable_ipv6 = 1 #kali-anonsurf" >> /etc/sysctl.conf
-	echo "net.ipv6.conf.default.disable_ipv6=1 #kali-anonsurf" >> /etc/sysctl.conf
+	echo "net.ipv6.conf.all.disable_ipv6 = 1 #anonsurf" >> /etc/sysctl.conf
+	echo "net.ipv6.conf.default.disable_ipv6=1 #anonsurf" >> /etc/sysctl.conf
 	sysctl -p > /dev/null  # have sysctl reread /etc/sysctl.conf
 
 	echo -e "\n$GREEN[$BLUE i$GREEN ]$BLUE Starting anonymous mode:$RESETCOLOR\n"
@@ -248,7 +248,7 @@ function stop {
 	echo -e "\n$GREEN[$BLUE i$GREEN ]$BLUE Reenabling IPv6 services:$RESETCOLOR\n"
 
 	# reenable IPv6 services
-	sed -i '/^.*\#kali-anonsurf$/d' /etc/sysctl.conf #delete lines containing #kali-anonsurf in /etc/sysctl.conf
+	sed -i '/^.*\#anonsurf$/d' /etc/sysctl.conf #delete lines containing #anonsurf in /etc/sysctl.conf
 	sysctl -p # have sysctl reread /etc/sysctl.conf
 
 	service network-manager force-reload > /dev/null 2>&1
